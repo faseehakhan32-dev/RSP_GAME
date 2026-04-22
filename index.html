@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock Paper Scissors — Battle Arena</title>
+  <meta name="description" content="An epic Rock Paper Scissors game with stunning animations, score tracking, and a modern battle arena interface." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Background particles -->
+  <div class="bg-overlay"></div>
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">⚔️</span>
+        <h1 class="logo-text">Battle Arena</h1>
+      </div>
+      <p class="tagline">Rock · Paper · Scissors</p>
+    </header>
+
+    <!-- Score Board -->
+    <div class="scoreboard" id="scoreboard">
+      <div class="score-card player-score-card">
+        <span class="score-label">YOU</span>
+        <span class="score-value" id="player-score">0</span>
+        <span class="score-sub">wins</span>
+      </div>
+      <div class="score-divider">
+        <span class="vs-text">VS</span>
+        <span class="round-info" id="round-info">Round 1</span>
+      </div>
+      <div class="score-card cpu-score-card">
+        <span class="score-label">CPU</span>
+        <span class="score-value" id="cpu-score">0</span>
+        <span class="score-sub">wins</span>
+      </div>
+    </div>
+
+    <!-- Battle Arena -->
+    <div class="battle-arena" id="battle-arena">
+      <!-- Player Side -->
+      <div class="side player-side">
+        <div class="side-label">Your Choice</div>
+        <div class="choice-display" id="player-display">
+          <div class="choice-emoji" id="player-emoji">❓</div>
+        </div>
+        <div class="choice-name" id="player-choice-name">—</div>
+      </div>
+
+      <!-- Clash Zone -->
+      <div class="clash-zone">
+        <div class="clash-effect" id="clash-effect"></div>
+        <div class="result-badge" id="result-badge">
+          <span class="result-text" id="result-text">Choose!</span>
+        </div>
+      </div>
+
+      <!-- CPU Side -->
+      <div class="side cpu-side">
+        <div class="side-label">CPU's Choice</div>
+        <div class="choice-display" id="cpu-display">
+          <div class="choice-emoji" id="cpu-emoji">❓</div>
+        </div>
+        <div class="choice-name" id="cpu-choice-name">—</div>
+      </div>
+    </div>
+
+    <!-- Instruction -->
+    <p class="instruction" id="instruction">Select your weapon to begin the battle!</p>
+
+    <!-- Choice Buttons -->
+    <div class="choices" id="choices">
+      <button class="choice-btn rock-btn" id="btn-rock" onclick="play('rock')" aria-label="Choose Rock">
+        <span class="choice-btn-emoji">🪨</span>
+        <span class="choice-btn-label">Rock</span>
+        <div class="btn-glow"></div>
+      </button>
+      <button class="choice-btn paper-btn" id="btn-paper" onclick="play('paper')" aria-label="Choose Paper">
+        <span class="choice-btn-emoji">📄</span>
+        <span class="choice-btn-label">Paper</span>
+        <div class="btn-glow"></div>
+      </button>
+      <button class="choice-btn scissors-btn" id="btn-scissors" onclick="play('scissors')" aria-label="Choose Scissors">
+        <span class="choice-btn-emoji">✂️</span>
+        <span class="choice-btn-label">Scissors</span>
+        <div class="btn-glow"></div>
+      </button>
+    </div>
+
+    <!-- Play Again / Reset -->
+    <div class="actions" id="actions" style="display:none;">
+      <button class="action-btn play-again-btn" id="btn-play-again" onclick="playAgain()" aria-label="Play Again">
+        🔄 Play Again
+      </button>
+      <button class="action-btn reset-btn" id="btn-reset" onclick="resetGame()" aria-label="Reset Scores">
+        🗑️ Reset Scores
+      </button>
+    </div>
+
+    <!-- Game History -->
+    <div class="history-section" id="history-section" style="display:none;">
+      <h3 class="history-title">Battle Log</h3>
+      <div class="history-list" id="history-list"></div>
+    </div>
+  </div>
+
+  <!-- Win/Lose Overlay -->
+  <div class="result-overlay" id="result-overlay" style="display:none;">
+    <div class="result-modal">
+      <div class="result-modal-emoji" id="modal-emoji"></div>
+      <div class="result-modal-title" id="modal-title"></div>
+      <div class="result-modal-subtitle" id="modal-subtitle"></div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
